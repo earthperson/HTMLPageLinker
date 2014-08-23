@@ -24,6 +24,7 @@ class HtmlPageLinker {
 			$this->_dataUriPage();
 			$this->_dataUriResources();
 			$this->_linkCss();
+			$this->_linkJavaScript();
 		}
 	}
 
@@ -91,6 +92,32 @@ class HtmlPageLinker {
 							$item[0],
 							'<style type="text/css">' . $contents . '</style>',
 							$text
+						);
+					}
+				}
+			}
+		}
+		file_put_contents($this->_path . $this->_page . $this->_out_suffix, $text);
+	}
+	
+	private function _linkJavaScript() {
+		$text = file_get_contents($this->_path . $this->_page . $this->_out_suffix);
+		$m = array();
+		preg_match_all("/\\<script.*?src=[\"'](.*?)[\"'].*?\\>\\<\\/script\\>/s", $text, $m, PREG_SET_ORDER);
+		foreach ($m as $item) {
+			if (isset($item[0], $item[1])) {
+				$file = $item[1];
+				if(substr($file, -3) == '.js') {
+					$f = $this->_path . $this->_resources . basename($file) . $this->_out_suffix;
+					if (is_file($f)) {
+						$contents = file_get_contents($f);
+						if($this->_unlink) {
+							@unlink($f);
+						}
+						$text = str_replace(
+								$item[0],
+								'<script type="text/javascript">' . $contents . '</script>',
+								$text
 						);
 					}
 				}
