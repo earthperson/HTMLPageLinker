@@ -3,7 +3,7 @@
  * Linking web page as one file after saving as "Web Page, complete" in a browser.
  * 
  * @author earthperson <ponomarev.dev@gmail.com>
- * @version 1.0.1
+ * @version 1.0.2
  */
 class HtmlPageLinker {
 
@@ -22,11 +22,24 @@ class HtmlPageLinker {
 	/** @var string Override output page or save with suffix */
 	private $_out_suffix;
 
+	/**
+	 * Construct a new HtmlPageLinker instance.
+	 * 
+	 * @param string $resources Path to the folder with files for saved HTML page.
+	 * @param string $path Base path.
+	 */
 	public function __construct($resources, $path = __DIR__) {
 		$this->_resources = $this->_directory($resources);
 		$this->_path = $this->_directory($path);
 	}
 	
+	/**
+	 * Public method for process saved HTML page.
+	 * 
+	 * @param string $page Saved HTML page name.
+	 * @param boolean $unlink Delete or not included into output page resources.
+	 * @param string $out_suffix Override output page or save with suffix.
+	 */
 	public function process($page, $unlink = false, $out_suffix = '') {
 		$this->_page = $page;
 		if(is_dir($this->_path . $this->_resources) && is_file($this->_path . $this->_page)) {
