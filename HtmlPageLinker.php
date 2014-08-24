@@ -1,19 +1,30 @@
 <?php
+/**
+ * Linking web page as one file after saving as "Web Page, complete" in a browser.
+ * 
+ * @author earthperson <ponomarev.dev@gmail.com>
+ * @version 1.0.1
+ */
 class HtmlPageLinker {
 
+	/** @var string Path to the folder with files for saved HTML page */
 	private $_resources;
 	
+	/** @var string Base path */
 	private $_path;
 	
+	/** @var string Saved HTML page name */
 	private $_page;
 	
+	/** @var boolean Delete or not included into output page resources */
 	private $_unlink;
 	
+	/** @var string Override output page or save with suffix */
 	private $_out_suffix;
 
 	public function __construct($resources, $path = __DIR__) {
-		$this->_resources = $resources;
-		$this->_path = rtrim($path, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
+		$this->_resources = $this->_directory($resources);
+		$this->_path = $this->_directory($path);
 	}
 	
 	public function process($page, $unlink = false, $out_suffix = '') {
@@ -124,5 +135,9 @@ class HtmlPageLinker {
 			}
 		}
 		file_put_contents($this->_path . $this->_page . $this->_out_suffix, $text);
+	}
+	
+	private function _directory($path) {
+		return rtrim($path, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 	}
 }
