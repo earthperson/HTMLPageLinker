@@ -1,2 +1,5 @@
 examplepage
 examplepage/*
+/vendor
+composer.phar
+composer.lock

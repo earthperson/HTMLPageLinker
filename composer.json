@@ -1,0 +1,8 @@
+{
+	"name": "earthperson/htmlpagelinker",
+	"description": "Linking web page as one file after saving as \"Web Page, complete\" in a browser",
+	"keywords": ["htmlpagelinker"],
+	"license": "MIT",
+	"type": "project",
+	"minimum-stability": "stable"
+}
