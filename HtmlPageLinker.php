@@ -3,7 +3,7 @@
  * Linking web page as one file after saving as "Web Page, complete" in a browser.
  * 
  * @author earthperson <ponomarev.dev@gmail.com>
- * @version 1.0.2
+ * @version 1.0.4
  */
 class HtmlPageLinker {
 
