@@ -2,7 +2,7 @@
 	"name": "earthperson/htmlpagelinker",
 	"description": "Linking web page as one file after saving as \"Web Page, complete\" in a browser",
 	"keywords": ["htmlpagelinker"],
+	"homepage": "https://github.com/earthperson/HTMLPageLinker",
 	"license": "MIT",
-	"type": "project",
-	"minimum-stability": "stable"
+	"type": "project"
 }
